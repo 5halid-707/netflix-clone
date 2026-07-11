@@ -34,6 +34,8 @@ function Player() {
     )
   }
 
+  const title = data?.title || data?.name
+
   return (
     <div className="player">
       <img onClick={() => navigate(-1)} src="/assets/play_icon.svg" alt={t('player.back')} style={{ transform: 'rotate(180deg)', width: 40 }} />
@@ -46,10 +48,10 @@ function Player() {
           allow="autoplay; encrypted-media"
           allowFullScreen
         />
-      ) : data ? (
+      ) : title ? (
         <div style={{ textAlign: 'center', padding: 40 }}>
-          <img src={img(data.poster_path)} alt={data.title || data.name} style={{ width: 200, borderRadius: 8, marginBottom: 20 }} />
-          <h1 style={{ margin: '10px 0' }}>{data.title || data.name}</h1>
+          <img src={img(data.poster_path) || 'https://placehold.co/200x300/333/fff?text=No+Poster'} alt={title} style={{ width: 200, borderRadius: 8, marginBottom: 20 }} />
+          <h1 style={{ margin: '10px 0' }}>{title}</h1>
           <p style={{ color: '#999', maxWidth: 600, margin: 'auto' }}>{data.overview}</p>
           <p style={{ color: '#666', marginTop: 10 }}>
             {data.vote_average ? `${Math.round(data.vote_average * 10)}% match` : ''} · {data.release_date || data.first_air_date || ''}

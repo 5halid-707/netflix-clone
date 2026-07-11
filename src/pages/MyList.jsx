@@ -28,7 +28,7 @@ function MyList() {
                   <img
                     src={img(item.path) || 'https://placehold.co/240x360/333/fff?text=No+Poster'}
                     alt={item.name}
-                    onClick={() => navigate(`/player/${item.id}?type=${item.type || 'movie'}`)}
+                    onClick={() => navigate(`/details/${item.id}?type=${item.type || 'movie'}`)}
                     style={{ cursor: 'pointer' }}
                   />
                   <p>{item.name}</p>

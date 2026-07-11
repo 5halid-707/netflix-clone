@@ -67,8 +67,11 @@ function fallbackResults(endpoint) {
 
 async function api(endpoint) {
   try {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 4000)
     const url = `${BASE}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${KEY}&language=ar-SA`
-    const res = await fetch(url)
+    const res = await fetch(url, { signal: controller.signal })
+    clearTimeout(timer)
     const data = await res.json()
     if (data.success === false) throw new Error(data.status_message)
     return data

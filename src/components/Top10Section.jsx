@@ -19,7 +19,7 @@ function Top10Section() {
       <h2>{t('home.top10')}</h2>
       <div className="top10-row" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         {items.map((item, i) => (
-          <div key={item.id} className="top10-card" onClick={() => navigate(`/player/${item.id}?type=movie`)}>
+          <div key={item.id} className="top10-card" onClick={() => navigate(`/details/${item.id}?type=movie`)}>
             <span className="top10-number">{String(i + 1).padStart(2, '0')}</span>
             <img src={img(item.poster_path) || 'https://placehold.co/160x240/333/fff?text=No+Poster'} alt={item.title || item.name} loading="lazy" />
           </div>

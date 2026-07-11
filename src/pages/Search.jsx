@@ -55,7 +55,7 @@ function Search() {
         {!loading && results.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
             {results.filter(i => i.media_type !== 'person').map(item => (
-              <div key={item.id} className="card" onClick={() => navigate(`/player/${item.id}?type=${item.media_type || 'movie'}`)} style={{ cursor: 'pointer' }}>
+              <div key={item.id} className="card" onClick={() => navigate(`/details/${item.id}?type=${item.media_type || 'movie'}`)} style={{ cursor: 'pointer' }}>
                 <img
                   src={img(item.poster_path) || 'https://placehold.co/240x360/333/fff?text=No+Poster'}
                   alt={item.title || item.name}
