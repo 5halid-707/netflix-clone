@@ -28,6 +28,8 @@ function Navbar() {
     ...(user ? [{ label: t('nav.myList'), path: '/my-list' }] : []),
   ]
 
+  const handleSearchClick = () => { navigate('/search'); }
+
   return (
     <nav className={`navbar ${scrolled ? 'nav-dark' : ''}`}>
       <div className="navbar-left">
@@ -48,7 +50,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-right">
-        <img className="icons" src="/search_icon.svg" alt={t('nav.search')} />
+        <img className="icons" src="/search_icon.svg" alt={t('nav.search')} onClick={handleSearchClick} style={{ cursor: 'pointer' }} />
         <p style={{ cursor: 'pointer' }}>{t('nav.kids')}</p>
         <img className="icons" src="/bell_icon.svg" alt={t('nav.notifications')} />
         <div className="navbar-profile">

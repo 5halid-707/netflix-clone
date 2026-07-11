@@ -11,6 +11,8 @@ import NewPopular from './pages/NewPopular'
 import MyList from './pages/MyList'
 import Admin from './pages/Admin'
 import Payment from './pages/Payment'
+import Search from './pages/Search'
+import Details from './pages/Details'
 import './App.css'
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Route path="/my-list" element={<MyList />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/details/:id" element={<Details />} />
           </Routes>
         </div>
       </AuthProvider>
