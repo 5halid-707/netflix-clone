@@ -9,12 +9,7 @@ export function LanguageProvider({ children }) {
   const [lang, setLang] = useState('ar')
 
   const t = (key) => {
-    const keys = key.split('.')
-    let val = translations[lang]
-    for (const k of keys) {
-      val = val?.[k]
-    }
-    return val || key
+    return translations[lang]?.[key] || key
   }
 
   const toggleLang = () => setLang(l => l === 'ar' ? 'en' : 'ar')
