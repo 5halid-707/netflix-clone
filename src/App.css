@@ -219,9 +219,29 @@
 
 .login {
   height: 100vh;
-  background: linear-gradient(#0000007e, #0000007e), url(/background_banner.jpg);
+  background: linear-gradient(#0000007e, #0000007e), url(https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg);
   background-size: cover;
   padding: 20px 8%;
+}
+
+.form-error {
+  background: #e87c03;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.form-switch span {
+  cursor: pointer;
+  color: #fff;
+}
+
+.form-captcha {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #8c8c8c;
 }
 
 .login-logo {

@@ -3,7 +3,7 @@ function Hero() {
     <div className="hero">
       <img
         className="banner-img"
-        src="https://picsum.photos/seed/netflix-banner/1600/600"
+        src="https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg"
         alt="banner"
       />
       <div className="hero-caption">
