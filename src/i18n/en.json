@@ -161,5 +161,10 @@
   "details.back": "Back",
   "details.addToList": "Add to My List",
   "details.inList": "In My List",
-  "details.similar": "Similar Content"
+  "details.similar": "Similar Content",
+  "details.movie": "Movie",
+  "details.tv": "TV Show",
+  "details.cast": "Cast",
+  "details.trailer": "Trailer",
+  "common.noOverview": "No overview available"
 }

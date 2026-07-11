@@ -18,10 +18,10 @@ function Home() {
         <Top10Section />
         <ReasonsSection />
         <div className="more-cards">
-          <TitleCards title={t('home.popular')} category="popular" />
-          <TitleCards title={t('home.trending')} category="trending" />
-          <TitleCards title={t('home.topRated')} category="topRated" />
-          <TitleCards title={t('home.action')} category="action" />
+          <TitleCards title="home.popular" endpoint="popular" params="movie" />
+          <TitleCards title="home.trending" endpoint="trending" params={{ media: 'tv', time: 'week' }} />
+          <TitleCards title="home.topRated" endpoint="topRated" params="movie" />
+          <TitleCards title="home.action" endpoint="discover" params={{ with_genres: 28, sort_by: 'popularity.desc' }} />
         </div>
         <FAQ />
         <EmailCtaSection />

@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useAuth } from '../context/AuthContext'
 import { useLanguage } from '../context/LanguageContext'
-import { getImage } from '../data/movies'
+import { img } from '../services/tmdb'
 import { useNavigate } from 'react-router-dom'
 
 function MyList() {
@@ -26,9 +25,12 @@ function MyList() {
             <div className="card-list">
               {myList.map((item) => (
                 <div key={item.id} className="card" style={{ position: 'relative' }}>
-                  <Link to={`/player/${item.id}`}>
-                    <img src={getImage(item.path)} alt={item.name} />
-                  </Link>
+                  <img
+                    src={img(item.path) || 'https://placehold.co/240x360/333/fff?text=No+Poster'}
+                    alt={item.name}
+                    onClick={() => navigate(`/player/${item.id}?type=${item.type || 'movie'}`)}
+                    style={{ cursor: 'pointer' }}
+                  />
                   <p>{item.name}</p>
                   <button
                     onClick={() => removeFromList(item.id)}

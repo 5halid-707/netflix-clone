@@ -161,5 +161,10 @@
   "details.back": "رجوع",
   "details.addToList": "أضف إلى قائمتي",
   "details.inList": "في قائمتي",
-  "details.similar": "محتوى مشابه"
+  "details.similar": "محتوى مشابه",
+  "details.movie": "فيلم",
+  "details.tv": "مسلسل",
+  "details.cast": "طاقم التمثيل",
+  "details.trailer": "الإعلان الدعائي",
+  "common.noOverview": "لا توجد نبذة متوفرة"
 }

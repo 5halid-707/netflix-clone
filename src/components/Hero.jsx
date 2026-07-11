@@ -1,11 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { tmdb, img } from '../services/tmdb'
 import { useLanguage } from '../context/LanguageContext'
 
 function Hero() {
   const [email, setEmail] = useState('')
+  const [bg, setBg] = useState('')
   const { t } = useLanguage()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    tmdb.trending('movie', 'week').then(data => {
+      const results = data.results || []
+      if (results.length > 0) {
+        const pick = results[Math.floor(Math.random() * Math.min(5, results.length))]
+        if (pick.backdrop_path) {
+          setBg(`https://image.tmdb.org/t/p/w1280${pick.backdrop_path}`)
+        }
+      }
+    })
+  }, [])
 
   const handleStart = (e) => {
     e.preventDefault()
@@ -17,7 +31,7 @@ function Hero() {
       <div className="hero-backdrop">
         <img
           className="banner-img"
-          src="https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg"
+          src={bg || 'https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg'}
           alt=""
         />
         <div className="hero-overlay" />
