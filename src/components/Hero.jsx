@@ -18,13 +18,14 @@ function Hero() {
         <img
           className="banner-img"
           src="https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg"
-          alt={t('hero.banner')}
+          alt=""
         />
         <div className="hero-overlay" />
       </div>
       <div className="hero-content">
         <h1 className="hero-tagline">{t('hero.tagline')}</h1>
         <p className="hero-subtagline">{t('hero.subtagline')}</p>
+        <p className="hero-ready">{t('emailCta.ready')}</p>
         <form className="hero-email-form" onSubmit={handleStart}>
           <input
             type="email"
@@ -35,14 +36,6 @@ function Hero() {
           />
           <button type="submit">{t('hero.getStarted')}</button>
         </form>
-        <div className="hero-btns">
-          <button className="btns">
-            <img src="/play_icon.svg" alt="" /> {t('hero.play')}
-          </button>
-          <button className="btns dark-btn">
-            <img src="/info_icon.svg" alt="" /> {t('hero.moreInfo')}
-          </button>
-        </div>
       </div>
     </div>
   )
