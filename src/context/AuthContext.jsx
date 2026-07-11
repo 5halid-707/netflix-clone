@@ -1,9 +1,14 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 
 const AuthContext = createContext()
 
+function loadList() {
+  return JSON.parse(localStorage.getItem('kmhflix_mylist') || '[]')
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  const [myList, setMyList] = useState(loadList)
 
   useEffect(() => {
     const saved = localStorage.getItem('kmhflix_user')
@@ -38,21 +43,23 @@ export function AuthProvider({ children }) {
   }
 
   const addToList = (item) => {
-    const list = JSON.parse(localStorage.getItem('kmhflix_mylist') || '[]')
-    if (!list.find(i => i.id === item.id)) {
-      list.push(item)
-      localStorage.setItem('kmhflix_mylist', JSON.stringify(list))
-    }
+    setMyList(prev => {
+      if (prev.find(i => i.id === item.id)) return prev
+      const next = [...prev, item]
+      localStorage.setItem('kmhflix_mylist', JSON.stringify(next))
+      return next
+    })
   }
 
   const removeFromList = (id) => {
-    const list = JSON.parse(localStorage.getItem('kmhflix_mylist') || '[]')
-    localStorage.setItem('kmhflix_mylist', JSON.stringify(list.filter(i => i.id !== id)))
+    setMyList(prev => {
+      const next = prev.filter(i => i.id !== id)
+      localStorage.setItem('kmhflix_mylist', JSON.stringify(next))
+      return next
+    })
   }
 
-  const myList = JSON.parse(localStorage.getItem('kmhflix_mylist') || '[]')
-
-  const isInList = (id) => myList.some(i => i.id === id)
+  const isInList = useCallback((id) => myList.some(i => i.id === id), [myList])
 
   return (
     <AuthContext.Provider value={{ user, login, signup, logout, addToList, removeFromList, myList, isInList }}>
