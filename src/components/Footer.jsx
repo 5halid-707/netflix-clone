@@ -1,4 +1,14 @@
+import { useLanguage } from '../context/LanguageContext'
+
 function Footer() {
+  const { t } = useLanguage()
+  const links = [
+    t('footer.audioDesc'), t('footer.help'), t('footer.gift'),
+    t('footer.media'), t('footer.investor'), t('footer.jobs'),
+    t('footer.terms'), t('footer.privacy'), t('footer.legal'),
+    t('footer.cookies'), t('footer.corporate'), t('footer.contact'),
+  ]
+
   return (
     <div className="footer">
       <div className="footer-icons">
@@ -8,20 +18,9 @@ function Footer() {
         <img src="/youtube_icon.svg" alt="youtube" />
       </div>
       <ul>
-        <li>Audio Description</li>
-        <li>Help Centre</li>
-        <li>Gift Cards</li>
-        <li>Media Centre</li>
-        <li>Investor Relations</li>
-        <li>Jobs</li>
-        <li>Terms of Use</li>
-        <li>Privacy</li>
-        <li>Legal Notices</li>
-        <li>Cookie Preferences</li>
-        <li>Corporate Information</li>
-        <li>Contact Us</li>
+        {links.map((link, i) => <li key={i}>{link}</li>)}
       </ul>
-      <p className="copyright-text">&copy; 2025 Netflix Khalid</p>
+      <p className="copyright-text">{t('footer.copyright')}</p>
     </div>
   )
 }

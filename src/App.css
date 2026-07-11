@@ -355,13 +355,207 @@
   width: 90%;
 }
 
-@media (max-width: 1024px) {
-  .hero-caption .title-cards {
-    display: none;
-  }
-  .hero-btns {
-    margin-bottom: 30px;
-  }
+/* Admin Panel */
+.admin-panel {
+  padding: 20px 6%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  background: #1e1e1e;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  color: #e50914;
+  margin: 0;
+}
+
+.stat-card p {
+  color: #999;
+  margin-top: 8px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+  padding: 12px 20px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.admin-table th {
+  background: #2a2a2a;
+  color: #999;
+  font-weight: 500;
+}
+
+.admin-btn {
+  background: #e50914;
+  color: #fff;
+  border: 0;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 4px;
+  font-size: 12px;
+}
+
+.admin-btn.del {
+  background: #555;
+}
+
+/* Payment Page */
+.payment-page {
+  padding: 20px 6%;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.payment-subtitle {
+  color: #999;
+  margin: 20px 0;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.plan-card {
+  background: #1e1e1e;
+  padding: 30px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.plan-card:hover {
+  border-color: #555;
+}
+
+.plan-card.active {
+  border-color: #e50914;
+  background: #2a1a1a;
+}
+
+.plan-card .price {
+  font-size: 28px;
+  color: #fff;
+  margin: 15px 0;
+}
+
+.plan-card .price span {
+  font-size: 14px;
+  color: #999;
+}
+
+.payment-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+.payment-form input {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  color: #fff;
+  margin: 12px 0;
+  border: 0;
+  border-radius: 4px;
+  padding: 16px 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.payment-form button {
+  width: 100%;
+  border: 0;
+  padding: 16px;
+  background: #e50914;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.payment-success {
+  background: #1e1e1e;
+  padding: 60px 40px;
+  border-radius: 12px;
+  margin: 40px 0;
+}
+
+.payment-success h2 {
+  color: #4caf50;
+  font-size: 36px;
+}
+
+/* RTL Support */
+[dir="rtl"] .hero-caption {
+  padding-right: 6%;
+  padding-left: 0;
+}
+
+[dir="rtl"] .more-cards {
+  padding-right: 6%;
+  padding-left: 0;
+}
+
+[dir="rtl"] .card-list .card p {
+  left: 10px;
+  right: auto;
+}
+
+[dir="rtl"] .hero-btns {
+  flex-direction: row;
+}
+
+[dir="rtl"] .caption-img {
+  min-width: 420px;
+}
+
+[dir="rtl"] .footer {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+[dir="rtl"] .form-switch span {
+  margin-right: 6px;
+  margin-left: 0;
+}
+
+[dir="rtl"] .login-logo {
+  display: block;
+}
+
+[dir="rtl"] .banner-img {
+  mask-image: linear-gradient(to left, transparent, black 75%);
+  -webkit-mask-image: linear-gradient(to left, transparent, black 75%);
 }
 
 @media (max-width: 800px) {
@@ -377,6 +571,10 @@
   .hero-caption {
     padding-left: 4%;
   }
+  [dir="rtl"] .hero-caption {
+    padding-right: 4%;
+    padding-left: 0;
+  }
   .caption-img {
     margin-bottom: 10px;
     width: 40%;
@@ -390,6 +588,10 @@
   }
   .more-cards {
     padding-left: 4%;
+  }
+  [dir="rtl"] .more-cards {
+    padding-right: 4%;
+    padding-left: 0;
   }
   .title-cards {
     margin-top: 20px;
@@ -447,5 +649,11 @@
   .login-form {
     padding: 20px;
     margin-top: 30%;
+  }
+  .admin-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .plans {
+    grid-template-columns: 1fr;
   }
 }
