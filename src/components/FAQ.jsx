@@ -12,7 +12,7 @@ function FAQ() {
       <h2>{t('faq.title')}</h2>
       <div className="faq-list">
         {faqKeys.map((q, i) => {
-          const answerKey = q.replace('q', 'a')
+          const answerKey = q.replace('.q', '.a')
           return (
             <div key={i} className={`faq-item ${open === i ? 'open' : ''}`}>
               <button className="faq-question" onClick={() => setOpen(open === i ? null : i)}>
