@@ -2,10 +2,10 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer-icons">
-        <img src="/assets/facebook_icon.svg" alt="facebook" />
-        <img src="/assets/instagram_icon.svg" alt="instagram" />
-        <img src="/assets/twitter_icon.svg" alt="twitter" />
-        <img src="/assets/youtube_icon.svg" alt="youtube" />
+        <img src="/facebook_icon.svg" alt="facebook" />
+        <img src="/instagram_icon.svg" alt="instagram" />
+        <img src="/twitter_icon.svg" alt="twitter" />
+        <img src="/youtube_icon.svg" alt="youtube" />
       </div>
       <ul>
         <li>Audio Description</li>
