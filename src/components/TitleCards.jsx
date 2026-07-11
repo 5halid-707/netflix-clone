@@ -16,16 +16,25 @@ function TitleCards({ title, endpoint, params = {} }) {
   useEffect(() => {
     if (!endpoint) return
     const fn = tmdb[endpoint]
-    if (fn) {
-      fn(params).then(data => {
-        const results = (data.results || []).slice(0, 20)
-        setItems(results)
-        setTimeout(() => {
-          const el = scrollRef.current
-          if (el) setShowRight(el.scrollWidth > el.clientWidth)
-        }, 100)
-      })
+    if (!fn) return
+    let promise
+    if (endpoint === 'trending') {
+      const p = params || {}
+      promise = fn(p.media || 'all', p.time || 'week')
+    } else if (endpoint === 'discover') {
+      const t = typeof params === 'string' ? params : 'movie'
+      promise = fn(t, typeof params === 'object' && !Array.isArray(params) ? params : {})
+    } else {
+      promise = fn(params)
     }
+    promise.then(data => {
+      const results = (data.results || []).slice(0, 20)
+      setItems(results)
+      setTimeout(() => {
+        const el = scrollRef.current
+        if (el) setShowRight(el.scrollWidth > el.clientWidth)
+      }, 100)
+    })
   }, [endpoint, JSON.stringify(params)])
 
   const updateArrows = () => {
@@ -43,14 +52,14 @@ function TitleCards({ title, endpoint, params = {} }) {
     setTimeout(updateArrows, 350)
   }
 
-  const handlePlay = (id, mediaType) => {
-    navigate(`/player/${id}?type=${mediaType || 'movie'}`)
+  const handleClick = (id, mediaType) => {
+    navigate(`/details/${id}?type=${mediaType || 'movie'}`)
   }
 
   return (
     <div className="title-cards" style={{ position: 'relative' }}>
       <h2>{t(title)}</h2>
-      {items.length === 0 && <p style={{ color: '#666', padding: 20, textAlign: 'center' }}>{t('common.loading')}</p>}
+      {items.length === 0 && <p style={{ color: '#666', padding: 20, textAlign: 'center' }}>{t('common.empty')}</p>}
       {items.length > 0 && (
         <div className="title-cards-wrapper" style={{ position: 'relative' }}>
           {showLeft && (
@@ -69,7 +78,7 @@ function TitleCards({ title, endpoint, params = {} }) {
                   <img
                     src={img(posterPath) || 'https://placehold.co/240x360/333/fff?text=No+Poster'}
                     alt={title}
-                    onClick={() => handlePlay(itemId, media)}
+                    onClick={() => handleClick(itemId, media)}
                     style={{ cursor: 'pointer' }}
                     loading="lazy"
                   />

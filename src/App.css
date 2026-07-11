@@ -477,6 +477,11 @@
   display: none;
 }
 
+.card {
+  position: relative;
+  flex-shrink: 0;
+}
+
 .card-list img {
   width: 240px;
   border-radius: 4px;

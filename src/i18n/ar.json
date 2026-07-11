@@ -114,6 +114,7 @@
   "banner.btnPlay": "تشغيل",
   "banner.btnInfo": "مزيد من المعلومات",
   "common.loading": "جارٍ التحميل...",
+  "common.empty": "لا توجد عناصر",
   "common.error": "حدث خطأ",
   "common.save": "حفظ",
   "common.cancel": "إلغاء",
